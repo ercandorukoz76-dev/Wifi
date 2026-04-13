@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İnternet Paylaşım</title>
+
+<style>
+body {
+    background: black;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+}
+
+img {
+    width: 250px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 1. EKRAN -->
+<div id="screen1">
+    <img src="resim1.jpg">
+    <h2>Siktir git internet minternet yok</h2>
+    <p>Gerçekten istiyor musun?</p>
+
+    <button id="btn1" class="hidden" onclick="showScreen2()">Evet</button>
+</div>
+
+<!-- 2. EKRAN -->
+<div id="screen2" class="hidden">
+    <img src="resim2.jpg">
+    <h2>Alsana internet</h2>
+    <p>Gerçekten istiyor musun?</p>
+
+    <button onclick="showScreen3()">Evet</button>
+    <button onclick="closeSite()">Hayır</button>
+</div>
+
+<!-- 3. EKRAN -->
+<div id="screen3" class="hidden">
+    <img src="resim3.jpg">
+    <h2>Al internet </h2>
+</div>
+
+<script>
+// 10 saniye sonra buton göster
+setTimeout(() => {
+    document.getElementById("btn1").classList.remove("hidden");
+}, 10000);
+
+// 2. ekran
+function showScreen2() {
+    document.getElementById("screen1").classList.add("hidden");
+    document.getElementById("screen2").classList.remove("hidden");
+}
+
+// 3. ekran
+function showScreen3() {
+    document.getElementById("screen2").classList.add("hidden");
+    document.getElementById("screen3").classList.remove("hidden");
+}
+
+// site kapatma (bazı telefonlarda çalışmayabilir)
+function closeSite() {
+    window.open('', '_self');
+    window.close();
+
+    // fallback
+    document.body.innerHTML = "<h1>Site kapatıldı</h1>";
+}
+</script>
+
+</body>
+</html>
